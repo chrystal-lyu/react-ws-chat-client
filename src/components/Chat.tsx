@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-import { useEffect, useState } from "react";
 import ChatInput from "./ChatInput";
 import ChatMessage, { ChatMessageProps } from "./ChatMessage";
 import Login from "./Login";
@@ -11,7 +10,10 @@ const client = new W3CWebSocket(URL);
 
 const Chat = () => {
   const [name, setName] = useState("");
-  const [messages, setMessages] = useState<ChatMessageProps[]>([]);
+  const [messages, setMessages] = useState<ChatMessageProps[]>([
+    { name: "chrystal", message: "hello" },
+    { name: "eddie", message: "hi there" },
+  ]);
 
   useEffect(() => {
     client.onopen = () => {
@@ -42,15 +44,17 @@ const Chat = () => {
     <div>
       {name ? (
         <div>
-          <pre>current name: {name}</pre>
+          <div className="text-secondary mb-2">Logged in as: {name}</div>
           <ChatInput onSubmit={(message) => addMessage(message)} />
-          {messages.map((message, index) => (
-            <ChatMessage
-              key={index}
-              name={message.name}
-              message={message.message}
-            />
-          ))}
+          <table>
+            {messages.map((message, index) => (
+              <ChatMessage
+                key={index}
+                name={message.name}
+                message={message.message}
+              />
+            ))}
+          </table>
         </div>
       ) : (
         <Login onSubmit={(name) => setName(name)} />

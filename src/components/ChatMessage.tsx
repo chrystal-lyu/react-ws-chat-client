@@ -8,9 +8,10 @@ export interface ChatMessageProps {
 const ChatMessage = (props: ChatMessageProps) => {
   const { name, message } = props;
   return (
-    <p>
-      <strong>{name}</strong> <code>{message}</code>
-    </p>
+    <tr>
+      <td>{name}</td>
+      <td>{message}</td>
+    </tr>
   );
 };
 

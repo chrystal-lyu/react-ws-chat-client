@@ -6,7 +6,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 main {
@@ -51,7 +51,7 @@ main {
 input {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #999999
+  border: 1px solid #999999;
 }
 
 input[type="submit"] {
@@ -60,7 +60,34 @@ input[type="submit"] {
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   margin: 1rem;
-  background-color: #6CC4A1;
+  background-color: #6cc4a1;
   border-radius: 0.5rem;
-  border: 1px solid #6CC4A1
+  border: 1px solid #6cc4a1;
+}
+
+.text-secondary {
+  color: #999999;
+}
+
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  padding: 2px 4px;
+}
+
+td:nth-child(1) {
+  color: #6cc4a1;
+  font-weight: 600;
+  text-align: right;
+}
+
+td:nth-child(2) {
+  color: #666666;
+  text-align: left;
 }
