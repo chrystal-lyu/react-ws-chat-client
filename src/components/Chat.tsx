@@ -1,15 +1,16 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 import { useEffect, useState } from "react";
 import ChatInput from "./ChatInput";
 import ChatMessage, { ChatMessageProps } from "./ChatMessage";
+import Login from "./Login";
 
 const URL = "ws://localhost:3030";
 const client = new W3CWebSocket(URL);
 
 const Chat = () => {
-  const [name, setName] = useState("Chrystal");
+  const [name, setName] = useState("");
   const [messages, setMessages] = useState<ChatMessageProps[]>([]);
 
   useEffect(() => {
@@ -37,31 +38,23 @@ const Chat = () => {
     );
   };
 
-  const onEditorStateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
   return (
     <div>
-      <label htmlFor="name">
-        Name&nbsp;
-        <input
-          type="text"
-          id={"name"}
-          placeholder="Enter your name..."
-          value={name}
-          onChange={(e) => onEditorStateChange(e)}
-        />
-      </label>
-      <pre>current name: {name}</pre>
-      <ChatInput onSubmit={(message) => addMessage(message)} />
-      {messages.map((message, index) => (
-        <ChatMessage
-          key={index}
-          name={message.name}
-          message={message.message}
-        />
-      ))}
+      {name ? (
+        <div>
+          <pre>current name: {name}</pre>
+          <ChatInput onSubmit={(message) => addMessage(message)} />
+          {messages.map((message, index) => (
+            <ChatMessage
+              key={index}
+              name={message.name}
+              message={message.message}
+            />
+          ))}
+        </div>
+      ) : (
+        <Login onSubmit={(name) => setName(name)} />
+      )}
     </div>
   );
 };

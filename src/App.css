@@ -1,3 +1,18 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+main {
+  padding: 2em;
+}
+
 .App {
   text-align: center;
 }
@@ -24,14 +39,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-main {
-  padding: 2em;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,4 +46,21 @@ main {
   to {
     transform: rotate(360deg);
   }
+}
+
+input {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #999999
+}
+
+input[type="submit"] {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  background-color: #6CC4A1;
+  border-radius: 0.5rem;
+  border: 1px solid #6CC4A1
 }
