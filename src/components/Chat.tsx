@@ -10,10 +10,7 @@ const client = new W3CWebSocket(URL);
 
 const Chat = () => {
   const [name, setName] = useState("");
-  const [messages, setMessages] = useState<ChatMessageProps[]>([
-    { name: "chrystal", message: "hello" },
-    { name: "eddie", message: "hi there" },
-  ]);
+  const [messages, setMessages] = useState<ChatMessageProps[]>([]);
 
   useEffect(() => {
     client.onopen = () => {
@@ -46,15 +43,13 @@ const Chat = () => {
         <div>
           <div className="text-secondary mb-2">Logged in as: {name}</div>
           <ChatInput onSubmit={(message) => addMessage(message)} />
-          <table>
-            {messages.map((message, index) => (
-              <ChatMessage
-                key={index}
-                name={message.name}
-                message={message.message}
-              />
-            ))}
-          </table>
+          {messages.map((message, index) => (
+            <ChatMessage
+              key={index}
+              name={message.name}
+              message={message.message}
+            />
+          ))}
         </div>
       ) : (
         <Login onSubmit={(name) => setName(name)} />
