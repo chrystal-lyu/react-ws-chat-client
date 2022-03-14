@@ -41,10 +41,6 @@ const Chat = () => {
     client.onclose = () => {
       client.close();
     };
-
-    return () => {
-      client.close();
-    };
   });
 
   return (
