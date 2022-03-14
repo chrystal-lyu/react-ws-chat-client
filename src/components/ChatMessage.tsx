@@ -8,7 +8,7 @@ export interface ChatMessageProps {
 
 const ChatMessage = (props: ChatMessageProps) => {
   const { name, time, message } = props;
-  console.log(props);
+
   return (
     <div className="chat-message">
       <div>{name}:</div>
