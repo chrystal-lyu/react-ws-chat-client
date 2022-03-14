@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 *The server of this Chat App can be found [here](https://github.com/chrystal-lyu/react-ws-chat-server).*
 
-![react-ws-chat-gifg](./assets/react-ws-chat.gif)
+![react-ws-chat-gifg](./src/assets/react-ws-chat.gif)
 
 ### Clone the repo:
 
