@@ -13,7 +13,7 @@ const ChatInput = (props: ChatInputProps) => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit(message);
+        message && onSubmit(message);
         setMessage("");
       }}
     >
