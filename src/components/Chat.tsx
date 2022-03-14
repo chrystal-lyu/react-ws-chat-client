@@ -37,6 +37,14 @@ const Chat = () => {
         addMessage(dataFromServer.data.clientMessage);
       }
     };
+
+    client.onclose = () => {
+      client.close();
+    };
+
+    return () => {
+      client.close();
+    };
   });
 
   return (
