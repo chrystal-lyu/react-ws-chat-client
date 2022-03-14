@@ -12,6 +12,20 @@ const Chat = () => {
   const [name, setName] = useState("");
   const [messages, setMessages] = useState<ChatMessageProps[]>([]);
 
+  const addMessage = (message: ChatMessageProps) => {
+    setMessages((prev) => [message, ...prev]);
+  };
+
+  const submitMessage = (message: string) => {
+    const content = { name: name, message: message };
+    client.send(
+      JSON.stringify({
+        type: "newmessage",
+        content,
+      })
+    );
+  };
+
   useEffect(() => {
     client.onopen = () => {
       console.log("connected");
@@ -20,29 +34,17 @@ const Chat = () => {
     client.onmessage = (message) => {
       const dataFromServer = JSON.parse(message.data as string);
       if (dataFromServer.type === "newmessage") {
-        setMessages(dataFromServer.data.clientMessages);
+        addMessage(dataFromServer.data.clientMessage);
       }
     };
   });
-
-  const addMessage = (message: string) => {
-    const copy = messages;
-    copy.push({ name: name, message: message });
-    client.send(
-      JSON.stringify({
-        type: "newmessage",
-        username: name,
-        content: copy,
-      })
-    );
-  };
 
   return (
     <div>
       {name ? (
         <div>
           <div className="text-secondary mb-2">Logged in as: {name}</div>
-          <ChatInput onSubmit={(message) => addMessage(message)} />
+          <ChatInput onSubmit={(message) => submitMessage(message)} />
           {messages.map((message, index) => (
             <ChatMessage
               key={index}
