@@ -3,14 +3,21 @@ import React from "react";
 export interface ChatMessageProps {
   name: string;
   message: string;
+  time: Date;
 }
 
 const ChatMessage = (props: ChatMessageProps) => {
-  const { name, message } = props;
+  const { name, time, message } = props;
+
   return (
     <div className="chat-message">
       <div>{name}:</div>
-      <div>{message}</div>
+      <div>
+        <div>{message}</div>
+        <div className="chat-message-time">
+          {time.toLocaleDateString()} {time.toLocaleTimeString()}
+        </div>
+      </div>
     </div>
   );
 };

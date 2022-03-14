@@ -17,7 +17,7 @@ const Chat = () => {
   };
 
   const submitMessage = (message: string) => {
-    const content = { name: name, message: message };
+    const content = { name: name, message: message, time: Date.now() };
     client.send(
       JSON.stringify({
         type: "newmessage",
@@ -50,6 +50,7 @@ const Chat = () => {
               key={index}
               name={message.name}
               message={message.message}
+              time={new Date(message.time)}
             />
           ))}
         </div>
